@@ -1,6 +1,6 @@
 package Module;
 
-public class Clientorder {
+public class ClientOrder {
 	private Integer orderID;
 	private String coID;
 	private String username;
@@ -9,11 +9,11 @@ public class Clientorder {
 	private Integer allItems;
 	private Integer allPrice;
 	
-	public Clientorder() {
+	public ClientOrder() {
 		super();
 	}
 
-	public Clientorder(String coID, String username, String shipAddress, String contactPhone, Integer allItems,
+	public ClientOrder(String coID, String username, String shipAddress, String contactPhone, Integer allItems,
 			Integer allPrice) {
 		super();
 		this.coID = coID;
