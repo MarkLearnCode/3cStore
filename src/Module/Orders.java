@@ -1,22 +1,22 @@
 package Module;
 
-public class Clientorder {
-	private Integer orderID;
-	private String coID;
+public class Orders {
+	private Integer id;
+	private String orderID;
 	private String username;
 	private String shipAddress;
 	private String contactPhone;
 	private Integer allItems;
 	private Integer allPrice;
-	
-	public Clientorder() {
+
+	public Orders() {
 		super();
 	}
 
-	public Clientorder(String coID, String username, String shipAddress, String contactPhone, Integer allItems,
+	public Orders(String orderID, String username, String shipAddress, String contactPhone, Integer allItems,
 			Integer allPrice) {
 		super();
-		this.coID = coID;
+		this.orderID = orderID;
 		this.username = username;
 		this.shipAddress = shipAddress;
 		this.contactPhone = contactPhone;
@@ -24,20 +24,20 @@ public class Clientorder {
 		this.allPrice = allPrice;
 	}
 
-	public Integer getOrderID() {
+	public Integer getid() {
+		return id;
+	}
+
+	public void setid(Integer id) {
+		this.id = id;
+	}
+
+	public String getorderID() {
 		return orderID;
 	}
 
-	public void setOrderID(Integer orderID) {
+	public void setorderID(String orderID) {
 		this.orderID = orderID;
-	}
-
-	public String getCoID() {
-		return coID;
-	}
-
-	public void setCoID(String coID) {
-		this.coID = coID;
 	}
 
 	public String getUsername() {
@@ -79,8 +79,5 @@ public class Clientorder {
 	public void setAllPrice(Integer allPrice) {
 		this.allPrice = allPrice;
 	}
-	
-	
-	
-	
+
 }
