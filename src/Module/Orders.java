@@ -1,22 +1,37 @@
 package Module;
 
+<<<<<<< HEAD:src/Module/Clientorder.java
 public class ClientOrder {
 	private Integer orderID;
 	private String coID;
+=======
+public class Orders {
+	private Integer id;
+	private String orderID;
+>>>>>>> 6417b660980ae9c944e43e0344c881e8b9d16fe5:src/Module/Orders.java
 	private String username;
 	private String shipAddress;
 	private String contactPhone;
 	private Integer allItems;
 	private Integer allPrice;
+<<<<<<< HEAD:src/Module/Clientorder.java
 	
 	public ClientOrder() {
 		super();
 	}
 
 	public ClientOrder(String coID, String username, String shipAddress, String contactPhone, Integer allItems,
+=======
+
+	public Orders() {
+		super();
+	}
+
+	public Orders(String orderID, String username, String shipAddress, String contactPhone, Integer allItems,
+>>>>>>> 6417b660980ae9c944e43e0344c881e8b9d16fe5:src/Module/Orders.java
 			Integer allPrice) {
 		super();
-		this.coID = coID;
+		this.orderID = orderID;
 		this.username = username;
 		this.shipAddress = shipAddress;
 		this.contactPhone = contactPhone;
@@ -24,20 +39,20 @@ public class ClientOrder {
 		this.allPrice = allPrice;
 	}
 
-	public Integer getOrderID() {
+	public Integer getid() {
+		return id;
+	}
+
+	public void setid(Integer id) {
+		this.id = id;
+	}
+
+	public String getorderID() {
 		return orderID;
 	}
 
-	public void setOrderID(Integer orderID) {
+	public void setorderID(String orderID) {
 		this.orderID = orderID;
-	}
-
-	public String getCoID() {
-		return coID;
-	}
-
-	public void setCoID(String coID) {
-		this.coID = coID;
 	}
 
 	public String getUsername() {
@@ -79,8 +94,5 @@ public class ClientOrder {
 	public void setAllPrice(Integer allPrice) {
 		this.allPrice = allPrice;
 	}
-	
-	
-	
-	
+
 }
