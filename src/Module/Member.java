@@ -46,6 +46,10 @@ public class Member {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setHashPassword(String password) {
 		this.password = pwdBcrypt.pwdHash(password);
 	}
 

@@ -1,8 +1,11 @@
 package Module;
 
+import java.sql.Timestamp;
+
 public class ItemsOut {
 	private Integer id;
 	private String orderID;
+	private Timestamp date;
 	private String itemOutID;
 	private String itemID;
 	private Integer count;
@@ -13,9 +16,11 @@ public class ItemsOut {
 		super();
 	}
 
-	public ItemsOut(String orderID, String itemOutID, String itemID, Integer count, Integer price, Integer allPrice) {
+	public ItemsOut(String orderID, Timestamp date, String itemOutID, String itemID, Integer count, Integer price,
+			Integer allPrice) {
 		super();
 		this.orderID = orderID;
+		this.date = date;
 		this.itemOutID = itemOutID;
 		this.itemID = itemID;
 		this.count = count;
@@ -37,6 +42,14 @@ public class ItemsOut {
 
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
+	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 
 	public String getItemOutID() {

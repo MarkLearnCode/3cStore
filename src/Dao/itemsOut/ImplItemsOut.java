@@ -24,16 +24,17 @@ public class ImplItemsOut implements ItemsOutDaO {
 	@Override
 	public void add(ItemsOut i) {
 		Connection conn = DBconnection.getDB();
-		String SQL = "insert into itemsOut set(orderID, itemOutID, itemID, count, price, allPrice) "
+		String SQL = "insert into itemsOut set(orderID, date, itemOutID, itemID, count, price, allPrice) "
 				+ "values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, i.getOrderID());
-			ps.setString(2, i.getItemOutID());
-			ps.setString(3, i.getItemID());
-			ps.setInt(4, i.getCount());
-			ps.setInt(5, i.getPrice());
-			ps.setInt(6, i.getAllPrice());
+			ps.setTimestamp(2, i.getDate());
+			ps.setString(3, i.getItemOutID());
+			ps.setString(4, i.getItemID());
+			ps.setInt(5, i.getCount());
+			ps.setInt(6, i.getPrice());
+			ps.setInt(7, i.getAllPrice());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,6 +55,7 @@ public class ImplItemsOut implements ItemsOutDaO {
 			while (rs.next()) {
 				i.setId(rs.getInt("id"));
 				i.setOrderID(rs.getString("orderID"));
+				i.setDate(rs.getTimestamp("date"));
 				i.setItemOutID(rs.getString("itemOutID"));
 				i.setItemID(rs.getString("itemID"));
 				i.setCount(rs.getInt("count"));
@@ -83,6 +85,7 @@ public class ImplItemsOut implements ItemsOutDaO {
 				ItemsOut i = new ItemsOut();
 				i.setId(rs.getInt("id"));
 				i.setOrderID(rs.getString("orderID"));
+				i.setDate(rs.getTimestamp("date"));
 				i.setItemOutID(rs.getString("itemOutID"));
 				i.setItemID(rs.getString("itemID"));
 				i.setCount(rs.getInt("count"));

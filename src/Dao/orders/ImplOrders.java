@@ -23,17 +23,18 @@ public class ImplOrders implements OrderDaO {
 	@Override
 	public void add(Orders o) {
 		Connection conn = DBconnection.getDB();
-		String SQL = "insert into orders(orderID, username, shipAddress, contactPhone, allItems, allPrice) "
+		String SQL = "insert into orders(orderID, date, username, shipAddress, contactPhone, allItems, allPrice) "
 				+ "values(?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(SQL);
-			ps.setString(1, o.getorderID());
-			ps.setString(2, o.getUsername());
-			ps.setString(3, o.getShipAddress());
-			ps.setString(4, o.getContactPhone());
-			ps.setInt(5, o.getAllItems());
-			ps.setInt(6, o.getAllPrice());
+			ps.setString(1, o.getOrderID());
+			ps.setTimestamp(2, o.getDate());
+			ps.setString(3, o.getUsername());
+			ps.setString(4, o.getShipAddress());
+			ps.setString(5, o.getContactPhone());
+			ps.setInt(6, o.getAllItems());
+			ps.setInt(7, o.getAllPrice());
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -53,8 +54,9 @@ public class ImplOrders implements OrderDaO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Orders o = new Orders();
-				o.setid(rs.getInt("id"));
-				o.setorderID(rs.getString("orderID"));
+				o.setId(rs.getInt("id"));
+				o.setOrderID(rs.getString("orderID"));
+				o.setDate(rs.getTimestamp("date"));
 				o.setUsername(rs.getString("username"));
 				o.setShipAddress(rs.getString("shipAddress"));
 				o.setContactPhone(rs.getString("contactPhone"));
@@ -81,8 +83,9 @@ public class ImplOrders implements OrderDaO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Orders o = new Orders();
-				o.setid(rs.getInt("id"));
-				o.setorderID(rs.getString("orderID"));
+				o.setId(rs.getInt("id"));
+				o.setOrderID(rs.getString("orderID"));
+				o.setDate(rs.getTimestamp("date"));
 				o.setUsername(rs.getString("username"));
 				o.setShipAddress(rs.getString("shipAddress"));
 				o.setContactPhone(rs.getString("contactPhone"));
@@ -110,8 +113,9 @@ public class ImplOrders implements OrderDaO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Orders o = new Orders();
-				o.setid(rs.getInt("id"));
-				o.setorderID(rs.getString("orderID"));
+				o.setId(rs.getInt("id"));
+				o.setOrderID(rs.getString("orderID"));
+				o.setDate(rs.getTimestamp("date"));
 				o.setUsername(rs.getString("username"));
 				o.setShipAddress(rs.getString("shipAddress"));
 				o.setContactPhone(rs.getString("contactPhone"));
@@ -139,7 +143,7 @@ public class ImplOrders implements OrderDaO {
 			ps.setString(2, o.getContactPhone());
 			ps.setInt(3, o.getAllItems());
 			ps.setInt(4, o.getAllPrice());
-			ps.setInt(5, o.getid());
+			ps.setInt(5, o.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

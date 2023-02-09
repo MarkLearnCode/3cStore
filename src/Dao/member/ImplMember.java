@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Dao.DBconnection;
+import Dao.OtherFunction.pwdBcrypt;
 import Module.Member;
 
 public class ImplMember implements MemberDaO {
@@ -26,14 +27,18 @@ public class ImplMember implements MemberDaO {
 //		for (Member member : list) {
 //			System.out.println(member.getName());
 //		}
-//		Member m = new ImplMember().queryUsername("mark");
-//		System.out.println(m.getName());
-
+		Member m = new ImplMember().queryUsername("mark");
+		System.out.println(m.getPassword());
+		boolean b = m != null;
+		System.out.println(b);
 		// update
-//		m.setAddress("°ª¶¯");
+//		m.setAddress("ï¿½ï¿½ï¿½ï¿½");
 //		m.setEmail("ppoo@mail");
 //		m.setPassword("abcd");
 //		new ImplMember().updatePwd(m);
+//		System.out.println(m.getPassword());
+		System.out.println("pwd" + pwdBcrypt.pwdCheck("abcd", m.getPassword()));
+//		pwdBcrypt.pwdCheck("abcd", m.getPassword());
 //		System.out.println(m.getPassword());
 
 		// delete
@@ -78,9 +83,9 @@ public class ImplMember implements MemberDaO {
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				show = show + "ID: " + rs.getInt("userid") + " ·|­û±b¸¹: " + rs.getString("username") + " E-mail: "
-						+ rs.getString("email") + " ©m¦W: " + rs.getString("name") + " ¹q¸Ü: " + rs.getString("phone")
-						+ " ¦a§}: " + rs.getString("address") + "\n";
+				show = show + "ID: " + rs.getInt("userid") + " ï¿½|ï¿½ï¿½ï¿½bï¿½ï¿½: " + rs.getString("username") + " E-mail: "
+						+ rs.getString("email") + " ï¿½mï¿½W: " + rs.getString("name") + " ï¿½qï¿½ï¿½: " + rs.getString("phone")
+						+ " ï¿½aï¿½}: " + rs.getString("address") + "\n";
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -101,6 +106,7 @@ public class ImplMember implements MemberDaO {
 				Member m = new Member();
 				m.setId(rs.getInt("userID"));
 				m.setUsername(rs.getString("username"));
+				m.setPassword(rs.getString("password"));
 				m.setEmail(rs.getString("email"));
 				m.setName(rs.getString("name"));
 				m.setPhone(rs.getString("phone"));
@@ -129,6 +135,7 @@ public class ImplMember implements MemberDaO {
 			if (rs.next()) {
 				m.setId(rs.getInt("userID"));
 				m.setUsername(rs.getString("username"));
+				m.setPassword(rs.getString("password"));
 				m.setEmail(rs.getString("email"));
 				m.setName(rs.getString("name"));
 				m.setPhone(rs.getString("phone"));
@@ -170,6 +177,7 @@ public class ImplMember implements MemberDaO {
 		String SQL = "update member set password=? where username=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(SQL);
+			m.setHashPassword(m.getPassword());
 			ps.setString(1, m.getPassword());
 //			System.out.println("ps = " + m.getPassword());
 			ps.setString(2, m.getUsername());
