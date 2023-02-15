@@ -15,6 +15,8 @@ public interface OrderDaO {
 	List<Orders> queryOrderID(String orderID);
 
 	List<Orders> queryOrderUsername(String username);
+	
+	List<Orders> queryOrderDate();
 
 	// U
 	void update(Orders o);

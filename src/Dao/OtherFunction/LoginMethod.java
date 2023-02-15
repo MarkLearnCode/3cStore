@@ -12,6 +12,7 @@ public class LoginMethod {
 			result = pwdBcrypt.pwdCheck(pwd, mp);
 		} else {
 			System.out.println("p error2");
+			System.out.println(m.getPassword());
 		}
 
 		System.out.println(result);

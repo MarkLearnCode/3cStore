@@ -1,5 +1,6 @@
 package Dao.member;
 
+import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,23 +28,24 @@ public class ImplMember implements MemberDaO {
 //		for (Member member : list) {
 //			System.out.println(member.getName());
 //		}
-		Member m = new ImplMember().queryUsername("mark");
-		System.out.println(m.getPassword());
-		boolean b = m != null;
-		System.out.println(b);
+//		Member m = new ImplMember().queryUsername("mark");
+//		System.out.println(m.getPassword());
+//		boolean b = m != null;
+//		System.out.println(b);
 		// update
 //		m.setAddress("����");
 //		m.setEmail("ppoo@mail");
 //		m.setPassword("abcd");
 //		new ImplMember().updatePwd(m);
 //		System.out.println(m.getPassword());
-		System.out.println("pwd" + pwdBcrypt.pwdCheck("abcd", m.getPassword()));
+//		System.out.println("pwd" + pwdBcrypt.pwdCheck("abcd", m.getPassword()));
 //		pwdBcrypt.pwdCheck("abcd", m.getPassword());
 //		System.out.println(m.getPassword());
 
 		// delete
 //		new ImplMember().delete("aaaa");
-
+		System.out.println(new ImplMember().ckeckUsername(""));
+		
 	}
 
 	// Create
@@ -148,6 +150,23 @@ public class ImplMember implements MemberDaO {
 
 		return m;
 	}
+	
+	@Override
+	public boolean ckeckUsername(String username) {
+		Connection conn = DBconnection.getDB();
+		String SQL = "select * from member where username=?";	
+		boolean bool = false;
+		try {
+			PreparedStatement ps = conn.prepareStatement(SQL);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();	
+			bool = rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bool;
+	}
 
 	// update
 	@Override
@@ -207,5 +226,7 @@ public class ImplMember implements MemberDaO {
 		}
 
 	}
+
+	
 
 }

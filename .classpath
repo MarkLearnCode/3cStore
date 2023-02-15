@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="I:/JAVA Learn/JAVA drivers/mysql-connector-java-5.1.49.jar"/>
-	<classpathentry kind="lib" path="I:/JAVA Learn/JAVA drivers/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/student/Documents/work/java drivaces/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/student/Documents/work/java drivaces/mySQL/mysql-connector-java-5.1.49.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

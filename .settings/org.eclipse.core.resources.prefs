@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/Controller=x-windows-950
+encoding//src/Controller/client/Index.java=UTF-8
+encoding//src/Controller/client/Sign.java=UTF-8
+encoding//src/Controller/client/clientPage.java=UTF-8
 encoding//src/Dao/itemsOut/ImplItemsOut.java=UTF-8
+encoding/<project>=UTF-8

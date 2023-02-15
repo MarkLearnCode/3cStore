@@ -16,7 +16,7 @@ public class ItemsOut {
 		super();
 	}
 
-	public ItemsOut(String orderID, Timestamp date, String itemOutID, String itemID, Integer count, Integer price,
+	public ItemsOut(String orderID,String itemOutID, Timestamp date,  String itemID, Integer count, Integer price,
 			Integer allPrice) {
 		super();
 		this.orderID = orderID;

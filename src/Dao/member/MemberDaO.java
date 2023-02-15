@@ -14,6 +14,8 @@ public interface MemberDaO {
 	List<Member> queryAllList();
 
 	Member queryUsername(String username);
+	
+	boolean ckeckUsername(String username);
 
 	// update
 	void update(Member m);

@@ -13,6 +13,8 @@ public interface ItemsOutDaO {
 	List<ItemsOut> queryAllList();
 
 	List<ItemsOut> queryItemOutOrder(String orderID);
+	
+	List<ItemsOut> queryItemOutOrderBydate();
 
 	// U
 	void update(ItemsOut I);

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -127,12 +128,18 @@ public class Index extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
 				String pwd = pwdField.getText();
-				if (LoginMethod.login(username, pwd)) {
-					Member m = new ImplMember().queryUsername(username);
-					clientPage frame = new clientPage();
-					frame.setVisible(true);
-					frame.setResizable(false);
-					dispose();
+				try {
+					if (LoginMethod.login(username, pwd)) {
+						Member m = new ImplMember().queryUsername(username);
+						clientPage frame = new clientPage();
+						frame.setVisible(true);
+						frame.setResizable(false);
+						dispose();
+					}
+				} catch (java.lang.NullPointerException e2) {
+					System.out.println("error");
+					JFrame jFrame = new JFrame();
+			        JOptionPane.showMessageDialog(jFrame, "帳號或密碼錯誤");
 				}
 
 			}
@@ -140,6 +147,9 @@ public class Index extends JFrame {
 
 		signBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Sign frame = new Sign();
+				frame.setVisible(true);
+				frame.setResizable(false);
 			}
 		});
 

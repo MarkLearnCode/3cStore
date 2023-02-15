@@ -1,49 +1,23 @@
 package Module;
 
-<<<<<<< HEAD
 import java.sql.Timestamp;
 
 public class Orders {
 	private Integer id;
 	private String orderID;
 	private Timestamp date;
-=======
-<<<<<<< HEAD:src/Module/Clientorder.java
-public class ClientOrder {
-	private Integer orderID;
-	private String coID;
-=======
-public class Orders {
-	private Integer id;
-	private String orderID;
->>>>>>> 6417b660980ae9c944e43e0344c881e8b9d16fe5:src/Module/Orders.java
->>>>>>> 6224c685310dbdd9d8e5df056f774f26d801d707
 	private String username;
 	private String shipAddress;
 	private String contactPhone;
 	private Integer allItems;
 	private Integer allPrice;
-<<<<<<< HEAD:src/Module/Clientorder.java
-	
-	public ClientOrder() {
-		super();
-	}
-
-	public ClientOrder(String coID, String username, String shipAddress, String contactPhone, Integer allItems,
-=======
 
 	public Orders() {
 		super();
 	}
 
-<<<<<<< HEAD
 	public Orders(String orderID, Timestamp date, String username, String shipAddress, String contactPhone,
 			Integer allItems, Integer allPrice) {
-=======
-	public Orders(String orderID, String username, String shipAddress, String contactPhone, Integer allItems,
->>>>>>> 6417b660980ae9c944e43e0344c881e8b9d16fe5:src/Module/Orders.java
-			Integer allPrice) {
->>>>>>> 6224c685310dbdd9d8e5df056f774f26d801d707
 		super();
 		this.orderID = orderID;
 		this.date = date;

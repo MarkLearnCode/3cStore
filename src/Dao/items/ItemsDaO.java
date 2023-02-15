@@ -13,6 +13,8 @@ public interface ItemsDaO {
 	List<Items> queryAllList();
 
 	List<Items> queryItemType(String itemType);
+	
+	Items queryItemID(String itemID);
 
 	// U
 	void update(Items I);

@@ -25,7 +25,8 @@ public class ImplItems implements ItemsDaO {
 //		for (Items items : l) {
 //			System.out.println(items.getBrand());
 //		}
-
+//		Items i = new ImplItems().queryItemID("230207C006");
+//		System.out.println(i.getItemName());
 	}
 
 	// C
@@ -58,7 +59,7 @@ public class ImplItems implements ItemsDaO {
 	public List<Items> queryAllList() {
 		List<Items> l = new ArrayList<>();
 		Connection conn = DBconnection.getDB();
-		String SQL = "select * from items";
+		String SQL = "select * from items order by itemType,Brand,grade;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ResultSet rs = ps.executeQuery();
@@ -87,7 +88,7 @@ public class ImplItems implements ItemsDaO {
 	public List<Items> queryItemType(String itemType) {
 		List<Items> l = new ArrayList<>();
 		Connection conn = DBconnection.getDB();
-		String SQL = "select * from items where itemType='" + itemType + "';";
+		String SQL = "select * from items where itemType='" + itemType + "' order by Brand,grade;";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(SQL);
@@ -111,6 +112,35 @@ public class ImplItems implements ItemsDaO {
 		}
 
 		return l;
+	}
+	
+	@Override
+	public Items queryItemID(String itemID) {
+		
+		Connection conn = DBconnection.getDB();
+		String SQL = "select * from items where itemID='" + itemID + "';";
+		Items i = new Items();
+		try {
+			PreparedStatement ps = conn.prepareStatement(SQL);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				
+				i.setId(rs.getInt("id"));
+				i.setItemID(rs.getString("itemID"));
+				i.setItemType(rs.getString("itemType"));
+				i.setGrade(rs.getString("Grade"));
+				i.setItemName(rs.getString("itemName"));
+				i.setBrand(rs.getString("Brand"));
+				i.setStock(rs.getInt("Stock"));
+				i.setPrice(rs.getInt("Price"));
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return i;
 	}
 
 	// UPDATE
@@ -184,5 +214,7 @@ public class ImplItems implements ItemsDaO {
 		}
 
 	}
+
+	
 
 }
